@@ -44,6 +44,36 @@ const manifoldMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.38,
 });
 
+const railMaterial = new THREE.MeshStandardMaterial({
+  color: "#9fb6c8",
+  roughness: 0.42,
+  metalness: 0.46,
+});
+
+const fenderMaterial = new THREE.MeshStandardMaterial({
+  color: "#1f2937",
+  emissive: "#0f172a",
+  emissiveIntensity: 0.12,
+  roughness: 0.82,
+  metalness: 0.08,
+});
+
+const fenderBandMaterial = new THREE.MeshStandardMaterial({
+  color: "#d97706",
+  emissive: "#7c2d12",
+  emissiveIntensity: 0.18,
+  roughness: 0.54,
+  metalness: 0.1,
+});
+
+const hoseEndMaterial = new THREE.MeshStandardMaterial({
+  color: "#fbbf24",
+  emissive: "#78350f",
+  emissiveIntensity: 0.12,
+  roughness: 0.42,
+  metalness: 0.34,
+});
+
 function StaticSceneBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -104,11 +134,11 @@ function SeaSurface({ reduceMotion }: SceneProps) {
     <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.08, 0]}>
       <planeGeometry args={[11.5, 8.2, segments, segments]} />
       <meshStandardMaterial
-        color="#061827"
-        roughness={0.68}
-        metalness={0.18}
+        color="#082337"
+        roughness={0.62}
+        metalness={0.22}
         transparent
-        opacity={0.92}
+        opacity={0.96}
       />
     </mesh>
   );
@@ -127,10 +157,10 @@ function DeckLights({ side = 1 }: { side?: 1 | -1 }) {
       {positions.map((position) => (
         <group key={position.join(":")} position={position}>
           <mesh>
-            <sphereGeometry args={[0.035, 12, 8]} />
-            <meshBasicMaterial color="#fef3c7" />
+            <sphereGeometry args={[0.026, 12, 8]} />
+            <meshBasicMaterial color="#fef3c7" transparent opacity={0.86} />
           </mesh>
-          <pointLight color="#facc15" intensity={0.28} distance={1.4} />
+          <pointLight color="#facc15" intensity={0.16} distance={1.1} />
         </group>
       ))}
     </>
@@ -146,52 +176,81 @@ function Vessel({
   side: 1 | -1;
   name: string;
 }) {
+  const hullShape = useMemo(() => {
+    const shape = new THREE.Shape();
+    shape.moveTo(0, -2.38);
+    shape.lineTo(-0.52, -1.78);
+    shape.lineTo(-0.56, 1.78);
+    shape.quadraticCurveTo(-0.52, 2.28, -0.34, 2.42);
+    shape.lineTo(0.34, 2.42);
+    shape.quadraticCurveTo(0.52, 2.28, 0.56, 1.78);
+    shape.lineTo(0.52, -1.78);
+    shape.closePath();
+    return shape;
+  }, []);
+
+  const hullExtrudeSettings = useMemo(
+    () => ({
+      depth: 0.42,
+      bevelEnabled: true,
+      bevelSegments: 2,
+      bevelSize: 0.028,
+      bevelThickness: 0.034,
+    }),
+    [],
+  );
+
   return (
     <group position={position}>
-      <mesh position={[0, 0.18, 0]} material={hullMaterial}>
-        <boxGeometry args={[0.95, 0.42, 4.4]} />
+      <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]} material={hullMaterial}>
+        <extrudeGeometry args={[hullShape, hullExtrudeSettings]} />
       </mesh>
-      <mesh position={[0, -0.01, -2.22]} material={rubberMaterial}>
-        <coneGeometry args={[0.48, 0.8, 4]} />
+      <mesh position={[0, 0.48, 0.12]} material={deckMaterial}>
+        <boxGeometry args={[0.84, 0.08, 3.74]} />
       </mesh>
-      <mesh position={[0, -0.01, 2.22]} rotation={[0, Math.PI, 0]} material={rubberMaterial}>
-        <coneGeometry args={[0.48, 0.8, 4]} />
+      <mesh position={[side * 0.46, 0.54, 0.1]} material={railMaterial}>
+        <boxGeometry args={[0.035, 0.055, 3.58]} />
       </mesh>
-      <mesh position={[0, 0.44, 0]} material={deckMaterial}>
-        <boxGeometry args={[0.78, 0.13, 3.72]} />
+      <mesh position={[-side * 0.46, 0.54, 0.1]} material={railMaterial}>
+        <boxGeometry args={[0.026, 0.04, 3.12]} />
       </mesh>
-      <mesh position={[0, 0.68, -1.25]} material={deckMaterial}>
-        <boxGeometry args={[0.58, 0.34, 0.86]} />
+      <mesh position={[0, 0.66, -1.18]} material={deckMaterial}>
+        <boxGeometry args={[0.54, 0.28, 0.82]} />
       </mesh>
-      <mesh position={[0, 0.91, -1.28]} material={glassMaterial}>
-        <boxGeometry args={[0.46, 0.11, 0.5]} />
+      <mesh position={[0, 0.86, -1.2]} material={deckMaterial}>
+        <boxGeometry args={[0.42, 0.2, 0.54]} />
       </mesh>
-      <mesh position={[side * 0.5, 0.58, -0.55]} material={glassMaterial}>
-        <boxGeometry args={[0.035, 0.055, 1.22]} />
+      <mesh position={[0, 1.0, -1.22]} material={glassMaterial}>
+        <boxGeometry args={[0.38, 0.09, 0.42]} />
       </mesh>
-      <mesh position={[side * 0.53, 0.61, 0.52]} material={glassMaterial}>
-        <boxGeometry args={[0.045, 0.06, 0.5]} />
+      <mesh position={[side * 0.43, 0.68, -0.52]} material={glassMaterial}>
+        <boxGeometry args={[0.035, 0.052, 1.18]} />
+      </mesh>
+      <mesh position={[side * 0.49, 0.61, 0.22]} material={railMaterial}>
+        <boxGeometry args={[0.035, 0.08, 0.82]} />
       </mesh>
       <mesh position={[side * 0.56, 0.56, -0.95]} material={manifoldMaterial}>
-        <boxGeometry args={[0.08, 0.14, 0.34]} />
+        <boxGeometry args={[0.1, 0.16, 0.42]} />
+      </mesh>
+      <mesh position={[side * 0.58, 0.62, -0.44]} material={manifoldMaterial}>
+        <boxGeometry args={[0.08, 0.12, 0.28]} />
       </mesh>
       <Line
         points={[
-          [side * 0.5, 0.71, -2.02],
-          [side * 0.5, 0.73, -1.26],
-          [side * 0.5, 0.72, -0.46],
-          [side * 0.5, 0.72, 0.42],
-          [side * 0.5, 0.7, 1.64],
+          [side * 0.47, 0.71, -2.0],
+          [side * 0.47, 0.72, -1.22],
+          [side * 0.47, 0.7, -0.44],
+          [side * 0.47, 0.7, 0.38],
+          [side * 0.47, 0.68, 1.58],
         ]}
         color="#7dd3fc"
         transparent
-        opacity={0.26}
+        opacity={0.32}
         lineWidth={1.2}
       />
       <DeckLights side={side} />
-      <mesh position={[0, 0.54, 1.58]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.026, 0.026, 0.8, 10]} />
-        <meshStandardMaterial color="#94a3b8" roughness={0.42} metalness={0.6} />
+      <mesh position={[0, 0.56, 1.42]} rotation={[0, 0, Math.PI / 2]} material={railMaterial}>
+        <cylinderGeometry args={[0.02, 0.02, 0.76, 12]} />
       </mesh>
       <mesh position={[side * 0.47, 0.72, 1.82]}>
         <boxGeometry args={[0.04, 0.24, 0.28]} />
@@ -199,12 +258,12 @@ function Vessel({
       </mesh>
       <group position={[0, 0.86, 2.08]}>
         <mesh>
-          <boxGeometry args={[0.66, 0.04, 0.06]} />
+          <boxGeometry args={[0.54, 0.035, 0.055]} />
           <meshBasicMaterial color="#67e8f9" transparent opacity={0.42} />
         </mesh>
         <mesh position={[0, 0.08, 0]}>
-          <boxGeometry args={[0.38, 0.025, 0.05]} />
-          <meshBasicMaterial color="#fef3c7" transparent opacity={0.72} />
+          <boxGeometry args={[0.3, 0.02, 0.045]} />
+          <meshBasicMaterial color="#fef3c7" transparent opacity={0.48} />
         </mesh>
       </group>
       <mesh position={[0, 0.64, 2.34]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -253,38 +312,40 @@ function Fenders({ reduceMotion }: SceneProps) {
 
   return (
     <group ref={groupRef}>
-      {[-1.48, -0.52, 0.52, 1.48].map((z, index) => (
-        <group key={z} position={[0, 0.45, z]}>
+      {[-1.22, -0.38, 0.46, 1.28].map((z) => (
+        <group key={z} position={[0, 0.52, z]}>
           <mesh rotation={[Math.PI / 2, 0, 0]}>
-            <cylinderGeometry args={[0.2, 0.2, 0.62, 28]} />
-            <meshStandardMaterial
-              color={index % 2 === 0 ? "#111827" : "#172033"}
-              roughness={0.7}
-              metalness={0.1}
-            />
+            <cylinderGeometry args={[0.27, 0.27, 0.76, 48]} />
+            <primitive object={fenderMaterial} attach="material" />
           </mesh>
-          <mesh position={[0, 0.02, 0]} rotation={[Math.PI / 2, 0, 0]}>
-            <torusGeometry args={[0.205, 0.012, 8, 30]} />
-            <meshBasicMaterial color="#fbbf24" transparent opacity={0.78} />
+          <mesh position={[0, 0, -0.22]} rotation={[Math.PI / 2, 0, 0]} material={fenderBandMaterial}>
+            <torusGeometry args={[0.274, 0.014, 10, 40]} />
+          </mesh>
+          <mesh position={[0, 0, 0.22]} rotation={[Math.PI / 2, 0, 0]} material={fenderBandMaterial}>
+            <torusGeometry args={[0.274, 0.014, 10, 40]} />
+          </mesh>
+          <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <torusGeometry args={[0.276, 0.008, 8, 40]} />
+            <meshBasicMaterial color="#fbbf24" transparent opacity={0.5} />
           </mesh>
           <Line
             points={[
               [-0.18, 0.32, 0],
-              [-0.52, 0.62, 0],
+              [-0.6, 0.62, 0],
             ]}
             color="#94a3b8"
             transparent
-            opacity={0.28}
+            opacity={0.34}
             lineWidth={1}
           />
           <Line
             points={[
               [0.18, 0.32, 0],
-              [0.52, 0.62, 0],
+              [0.6, 0.62, 0],
             ]}
             color="#94a3b8"
             transparent
-            opacity={0.28}
+            opacity={0.34}
             lineWidth={1}
           />
         </group>
@@ -307,32 +368,49 @@ function TransferLines({ reduceMotion }: SceneProps) {
   return (
     <group ref={lineRef}>
       <QuadraticBezierLine
-        start={[-1.04, 0.78, -0.92]}
-        mid={[0, 1.28, -1.05]}
-        end={[1.04, 0.78, -0.92]}
+        start={[-0.68, 0.76, -0.72]}
+        mid={[0, 1.24, -0.98]}
+        end={[0.68, 0.76, -0.72]}
+        color="#06111f"
+        lineWidth={9}
+        transparent
+        opacity={0.92}
+      />
+      <QuadraticBezierLine
+        start={[-0.68, 0.78, -0.72]}
+        mid={[0, 1.28, -1.0]}
+        end={[0.68, 0.78, -0.72]}
         color="#67e8f9"
-        lineWidth={4}
+        lineWidth={5}
         transparent
-        opacity={0.88}
+        opacity={0.9}
       />
       <QuadraticBezierLine
-        start={[-1.03, 0.7, -0.72]}
-        mid={[0, 1.06, -0.83]}
-        end={[1.03, 0.7, -0.72]}
-        color="#0f172a"
-        lineWidth={6}
+        start={[-0.7, 0.69, -0.46]}
+        mid={[0, 1.02, -0.58]}
+        end={[0.7, 0.69, -0.46]}
+        color="#0b1220"
+        lineWidth={7}
         transparent
-        opacity={0.72}
+        opacity={0.86}
       />
       <QuadraticBezierLine
-        start={[-1.05, 0.84, -1.08]}
-        mid={[0, 1.48, -1.32]}
-        end={[1.05, 0.84, -1.08]}
+        start={[-0.68, 0.84, -0.92]}
+        mid={[0, 1.46, -1.2]}
+        end={[0.68, 0.84, -0.92]}
         color="#c4f1ff"
-        lineWidth={1.4}
+        lineWidth={1.8}
         transparent
-        opacity={0.56}
+        opacity={0.64}
       />
+      {[
+        [-0.68, 0.76, -0.72],
+        [0.68, 0.76, -0.72],
+      ].map((position) => (
+        <mesh key={position.join(":")} position={position as [number, number, number]} rotation={[0, 0, Math.PI / 2]} material={hoseEndMaterial}>
+          <cylinderGeometry args={[0.055, 0.055, 0.16, 16]} />
+        </mesh>
+      ))}
     </group>
   );
 }
@@ -378,10 +456,10 @@ function SceneCameraRig({ reduceMotion }: SceneProps) {
       return;
     }
 
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, 4.7 + pointer.x * 0.22, 0.04);
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, 4.4 + pointer.x * 0.2, 0.04);
     camera.position.y = THREE.MathUtils.lerp(
       camera.position.y,
-      3.1 + pointer.y * 0.16 + Math.sin(clock.elapsedTime * 0.28) * 0.04,
+      3.05 + pointer.y * 0.14 + Math.sin(clock.elapsedTime * 0.28) * 0.035,
       0.04,
     );
     camera.lookAt(0, 0.42, 0);
@@ -403,15 +481,17 @@ function OperationScene({ reduceMotion }: SceneProps) {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[4.7, 3.1, 6.4]} fov={38} />
+      <PerspectiveCamera makeDefault position={[4.4, 3.05, 5.85]} fov={37} />
       <SceneCameraRig reduceMotion={reduceMotion} />
-      <ambientLight intensity={0.46} />
-      <directionalLight position={[-3, 6, 4]} intensity={1.25} color="#dff8ff" />
-      <pointLight position={[2.2, 1.7, -2]} intensity={0.8} color="#67e8f9" distance={5} />
-      <pointLight position={[-2.4, 1.25, 2.2]} intensity={0.42} color="#fbbf24" distance={4} />
+      <ambientLight intensity={0.52} />
+      <hemisphereLight args={["#dff8ff", "#020617", 0.32]} />
+      <directionalLight position={[-3.5, 5.6, 4.2]} intensity={1.35} color="#dff8ff" />
+      <directionalLight position={[3.8, 2.4, -3.8]} intensity={0.64} color="#67e8f9" />
+      <pointLight position={[1.7, 1.45, -1.6]} intensity={0.62} color="#67e8f9" distance={4.6} />
+      <pointLight position={[-2.2, 1.2, 1.8]} intensity={0.3} color="#fbbf24" distance={3.6} />
       <fog attach="fog" args={["#020617", 6.2, 13]} />
 
-      <group ref={groupRef} position={[0, -0.12, 0]} rotation={[0, -0.14, 0]}>
+      <group ref={groupRef} position={[0, -0.14, 0]} rotation={[0, -0.08, 0]}>
         <SeaSurface reduceMotion={reduceMotion} />
         <Float speed={reduceMotion ? 0 : 0.8} rotationIntensity={0.08} floatIntensity={0.06}>
           <Vessel position={[-1.15, 0.28, 0]} side={1} name="Casualty vessel" />
@@ -461,7 +541,8 @@ export function STSScene() {
 
   return (
     <div
-      className="relative mx-auto aspect-[1.18] w-full max-w-[650px] overflow-hidden rounded-lg border border-cyan-200/20 bg-slate-950/78 shadow-2xl shadow-cyan-950/35 backdrop-blur-xl sm:aspect-[1.04]"
+      data-hero-visual
+      className="relative mx-auto aspect-[1.82] w-full max-w-[650px] overflow-hidden rounded-lg border border-cyan-200/20 bg-slate-950/78 shadow-2xl shadow-cyan-950/35 backdrop-blur-xl sm:aspect-[1.04]"
       aria-label="Three-dimensional emergency ship-to-ship transfer scene"
     >
       <StaticSceneBackdrop />
@@ -478,13 +559,13 @@ export function STSScene() {
         <AdaptiveDpr pixelated />
       </Canvas>
       <div className="pointer-events-none absolute inset-0 z-20 rounded-lg bg-[radial-gradient(circle_at_70%_20%,rgba(103,232,249,0.12),transparent_28%),linear-gradient(180deg,rgba(2,6,23,0)_58%,rgba(2,6,23,0.56))]" />
-      <div className="pointer-events-none absolute left-5 top-5 z-30 rounded-lg border border-cyan-200/16 bg-slate-950/70 px-4 py-3 shadow-2xl shadow-black/20 backdrop-blur">
+      <div className="pointer-events-none absolute left-3 top-3 z-30 rounded-lg border border-cyan-200/16 bg-slate-950/70 px-3 py-2 shadow-2xl shadow-black/20 backdrop-blur sm:left-5 sm:top-5 sm:px-4 sm:py-3">
         <p className="text-xs font-semibold uppercase text-cyan-200">
           STS transfer control
         </p>
-        <p className="mt-1 text-sm text-slate-300">Fenders, hose, watchkeeping</p>
+        <p className="mt-1 text-xs text-slate-300 sm:text-sm">Fenders, hose, watchkeeping</p>
       </div>
-      <div className="pointer-events-none absolute bottom-5 left-5 right-5 z-30 grid gap-2 sm:grid-cols-3">
+      <div className="pointer-events-none absolute bottom-5 left-5 right-5 z-30 hidden gap-2 sm:grid sm:grid-cols-3">
         {["Casualty vessel", "Pneumatic fenders", "Receiving vessel"].map((item) => (
           <div
             key={item}

@@ -131,21 +131,21 @@ export default function Home() {
       <main>
         <Link
           href="/contact"
-          className="fixed bottom-5 right-6 z-40 hidden items-center justify-center gap-2 rounded-lg border border-cyan-100/25 bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 shadow-2xl shadow-cyan-950/35 transition hover:bg-cyan-200 md:inline-flex"
+          className="fixed bottom-5 right-6 z-40 hidden items-center justify-center gap-2 rounded-lg border border-cyan-100/25 bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 shadow-2xl shadow-cyan-950/35 transition hover:bg-cyan-200 2xl:inline-flex"
         >
           Emergency Request
           <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
 
-        <section className="relative overflow-hidden border-b border-cyan-200/10 py-10 md:py-12">
+        <section className="relative overflow-hidden border-b border-cyan-200/10 py-6 md:py-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_34%,rgba(103,232,249,0.12),transparent_32%),radial-gradient(circle_at_18%_18%,rgba(45,212,191,0.08),transparent_30%)]" />
-          <div className="container-pad relative grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="container-pad relative grid items-center gap-6 md:gap-10 lg:grid-cols-[0.92fr_1.08fr]">
             <Reveal>
               <div className="max-w-3xl">
-                <h1 className="text-4xl font-semibold leading-[1.05] text-white md:text-5xl xl:text-[3.25rem]">
+                <h1 className="text-[2.05rem] font-semibold leading-[1.06] text-white sm:text-4xl md:text-5xl xl:text-[3.25rem]">
                   Emergency STS and Cargo Transfer, When Every Hour Matters.
                 </h1>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+                <p className="mt-4 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base md:mt-5 md:text-lg md:leading-7">
                   AES Response is built for time-critical emergency STS,
                   lightering, salvage pumping and pollution prevention support
                   when cargo, vessel condition or environmental exposure
@@ -153,7 +153,7 @@ export default function Home() {
                   Türkiye, Black Sea and Eastern Mediterranean.
                 </p>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap md:mt-6">
                   <Link
                     href="/contact"
                     className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
@@ -169,13 +169,13 @@ export default function Home() {
                   </Link>
                   <Link
                     href="/equipment"
-                    className="inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold text-slate-300 transition hover:text-cyan-100"
+                    className="hidden items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold text-slate-300 transition hover:text-cyan-100 sm:inline-flex"
                   >
                     Explore Capabilities
                   </Link>
                 </div>
 
-                <div className="mt-6 grid gap-2 sm:grid-cols-2">
+                <div className="mt-6 hidden gap-2 md:grid md:grid-cols-2">
                   {trustStrip.map((item) => (
                     <div
                       key={item}
@@ -198,8 +198,8 @@ export default function Home() {
             </Reveal>
 
             <Reveal delay={0.18} className="lg:col-span-2">
-              <div className="grid gap-4 lg:grid-cols-[1fr_0.52fr]">
-                <div className="grid gap-3 rounded-lg border border-cyan-200/14 bg-slate-950/58 p-3 shadow-2xl shadow-black/20 backdrop-blur-xl sm:grid-cols-2 xl:grid-cols-4">
+              <div className="grid gap-3 md:gap-4 lg:grid-cols-[1fr_0.52fr]">
+                <div className="hidden gap-3 rounded-lg border border-cyan-200/14 bg-slate-950/58 p-3 shadow-2xl shadow-black/20 backdrop-blur-xl md:grid md:grid-cols-2 xl:grid-cols-4">
                   {commandStatus.map((item) => {
                     const Icon = item.icon;
 
@@ -221,8 +221,23 @@ export default function Home() {
                     );
                   })}
                 </div>
-                <aside className="rounded-lg border border-cyan-200/16 bg-[linear-gradient(145deg,rgba(15,23,42,0.78),rgba(8,47,73,0.32))] p-5 shadow-2xl shadow-black/18 backdrop-blur-xl">
-                  <div className="flex items-center gap-3">
+                <aside className="rounded-lg border border-cyan-200/16 bg-[linear-gradient(145deg,rgba(15,23,42,0.78),rgba(8,47,73,0.32))] p-4 shadow-2xl shadow-black/18 backdrop-blur-xl md:p-5">
+                  <div className="grid gap-2 md:hidden">
+                    {trustStrip.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-2 text-sm leading-5 text-slate-300"
+                      >
+                        <CheckCircle2
+                          aria-hidden="true"
+                          className="size-4 shrink-0 text-cyan-200"
+                          strokeWidth={1.8}
+                        />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center gap-3 border-t border-cyan-200/10 pt-4 md:mt-0 md:border-t-0 md:pt-0">
                     <span className="flex size-10 items-center justify-center rounded-lg border border-cyan-200/16 bg-cyan-300/10 text-cyan-200">
                       <ClipboardCheck aria-hidden="true" className="size-5" strokeWidth={1.8} />
                     </span>
@@ -230,11 +245,13 @@ export default function Home() {
                       Response Intake Checklist
                     </h2>
                   </div>
-                  <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
-                    {intakeChecklist.map((item) => (
+                  <div className="mt-4 grid gap-2 border-t border-cyan-200/10 pt-4 sm:grid-cols-2 lg:grid-cols-1">
+                    {intakeChecklist.map((item, index) => (
                       <div
                         key={item}
-                        className="flex items-center gap-2 text-sm leading-5 text-slate-300"
+                        className={`items-center gap-2 text-sm leading-5 text-slate-300 ${
+                          index > 3 ? "hidden md:flex" : "flex"
+                        }`}
                       >
                         <span className="size-1.5 rounded-full bg-cyan-200" />
                         <span>{item}</span>
@@ -247,15 +264,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-b border-cyan-200/10 bg-[linear-gradient(180deg,rgba(3,18,30,0.58),rgba(2,6,23,0.76))] py-16 md:py-24">
+        <section className="border-b border-cyan-200/10 bg-[linear-gradient(180deg,rgba(3,18,30,0.58),rgba(2,6,23,0.76))] py-10 md:py-24">
           <div className="container-pad">
-            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="grid gap-6 md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <Reveal>
                 <div className="max-w-3xl">
-                  <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
+                  <h2 className="text-2xl font-semibold leading-tight text-white md:text-5xl">
                     Built for the first 24 hours of a marine casualty.
                   </h2>
-                  <p className="mt-5 text-base leading-8 text-slate-300">
+                  <p className="mt-4 text-sm leading-6 text-slate-300 md:mt-5 md:text-base md:leading-8">
                     The first day of a casualty response often decides the quality
                     of the next week. AES Response is designed to help owners,
                     managers and appointed stakeholders move quickly from
@@ -293,7 +310,7 @@ export default function Home() {
 
         <CapabilityCTA compact />
 
-        <section className="py-20 md:py-28">
+        <section className="py-14 md:py-28">
           <div className="container-pad">
             <SectionHeader
               label="Services"
@@ -308,7 +325,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-y border-cyan-200/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.42),rgba(2,6,23,0.72))] py-20 md:py-28">
+        <section className="border-y border-cyan-200/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.42),rgba(2,6,23,0.72))] py-14 md:py-28">
           <div className="container-pad">
             <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
               <SectionHeader
@@ -325,7 +342,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 md:py-28">
+        <section className="py-14 md:py-28">
           <div className="container-pad">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
               <div>
@@ -348,7 +365,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-y border-cyan-200/10 bg-[linear-gradient(180deg,rgba(3,18,30,0.76),rgba(2,6,23,0.78))] py-20 md:py-28">
+        <section className="border-y border-cyan-200/10 bg-[linear-gradient(180deg,rgba(3,18,30,0.76),rgba(2,6,23,0.78))] py-14 md:py-28">
           <div className="container-pad">
             <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
               <SectionHeader

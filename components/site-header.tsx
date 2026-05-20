@@ -6,9 +6,9 @@ import { siteConfig } from "@/lib/site";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-cyan-200/10 bg-slate-950/78 backdrop-blur-xl">
-      <div className="container-pad flex h-20 items-center justify-between gap-5">
+      <div className="container-pad flex h-16 items-center justify-between gap-4 md:h-20 md:gap-5">
         <Link href="/" className="flex items-center gap-3" aria-label="AES Response home">
-          <span className="flex size-11 items-center justify-center rounded-lg border border-cyan-200/25 bg-cyan-300/10 text-cyan-200">
+          <span className="flex size-10 items-center justify-center rounded-lg border border-cyan-200/25 bg-cyan-300/10 text-cyan-200 md:size-11">
             <ShipWheel aria-hidden="true" className="size-5" strokeWidth={1.8} />
           </span>
           <span className="flex flex-col leading-none">

@@ -9,7 +9,7 @@ type CapabilityCTAProps = {
 
 export function CapabilityCTA({ compact = false }: CapabilityCTAProps) {
   return (
-    <section className={compact ? "py-10" : "py-14 md:py-20"}>
+    <section className={compact ? "py-6 md:py-10" : "py-12 md:py-20"}>
       <div className="container-pad">
         <Reveal>
           <div className="relative overflow-hidden rounded-lg border border-cyan-200/16 bg-[linear-gradient(135deg,rgba(15,23,42,0.82),rgba(3,18,30,0.9)_48%,rgba(8,47,73,0.44))] p-6 shadow-2xl shadow-black/18 md:p-8">
