@@ -8,6 +8,7 @@ export const siteConfig = {
     { label: "Services", href: "/services" },
     { label: "Equipment", href: "/equipment" },
     { label: "Process", href: "/process" },
+    { label: "Capability", href: "/capability-statement" },
     { label: "Insights", href: "/insights" },
     { label: "Contact", href: "/contact" },
   ],

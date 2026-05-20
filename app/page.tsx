@@ -162,7 +162,7 @@ export default function Home() {
                     <ArrowRight aria-hidden="true" className="size-4" />
                   </Link>
                   <Link
-                    href="/contact?subject=capability-statement"
+                    href="/capability-statement"
                     className="inline-flex items-center justify-center rounded-lg border border-cyan-200/22 bg-white/5 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/40 hover:bg-white/8"
                   >
                     Request Capability Statement

@@ -31,7 +31,7 @@ export function CapabilityCTA({ compact = false }: CapabilityCTAProps) {
                 </div>
               </div>
               <Link
-                href="/contact?subject=capability-statement"
+                href="/capability-statement"
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-cyan-100/20 bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
               >
                 Request Capability Statement

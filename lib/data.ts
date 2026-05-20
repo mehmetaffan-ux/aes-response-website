@@ -422,8 +422,8 @@ export const articles: Article[] = [
       },
       {
         label: "Request Capability Statement",
-        href: "/contact?subject=capability-statement",
-        description: "Ask for a capability statement for owners, insurers or authorities.",
+        href: "/capability-statement",
+        description: "Review the capability statement for owners, insurers or authorities.",
       },
     ],
   },
@@ -634,8 +634,8 @@ export const articles: Article[] = [
       },
       {
         label: "Request Capability Statement",
-        href: "/contact?subject=capability-statement",
-        description: "Ask for a capability statement for stakeholder review.",
+        href: "/capability-statement",
+        description: "Review the capability statement for stakeholder review.",
       },
     ],
   },
