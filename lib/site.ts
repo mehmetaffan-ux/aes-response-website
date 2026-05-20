@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "AES Response",
   url: "https://aesresponse.com",
   description:
-    "Emergency ship-to-ship cargo transfer, STS lightering, salvage pumping, bunker removal and pollution prevention support for distressed vessels across the Aegean, Turkiye, Black Sea and Eastern Mediterranean.",
+    "Emergency ship-to-ship cargo transfer, STS lightering, salvage pumping, bunker removal and pollution prevention support for distressed vessels across the Aegean, Türkiye, Black Sea and Eastern Mediterranean.",
   nav: [
     { label: "Services", href: "/services" },
     { label: "Equipment", href: "/equipment" },
@@ -11,5 +11,5 @@ export const siteConfig = {
     { label: "Insights", href: "/insights" },
     { label: "Contact", href: "/contact" },
   ],
-  regions: ["Aegean", "Turkiye", "Black Sea", "Eastern Mediterranean"],
+  regions: ["Aegean", "Türkiye", "Black Sea", "Eastern Mediterranean"],
 };

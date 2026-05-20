@@ -21,7 +21,7 @@ export default function InsightsPage() {
     <main>
       <PageHero
         title="Knowledge hub for emergency STS and cargo recovery decisions."
-        description="Clear, practical guidance for owners, operators and appointed stakeholders preparing for emergency lightering, cargo removal and pollution prevention scenarios."
+        description="These technical notes are written for shipowners, managers, charterers and appointed stakeholders who need clear preparation guidance before an emergency transfer decision."
       />
 
       <section className="py-16 md:py-24">

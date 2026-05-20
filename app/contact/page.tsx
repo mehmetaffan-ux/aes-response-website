@@ -8,7 +8,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = {
   title: "Emergency Request Contact",
   description:
-    "UI-only emergency request form for vessel name, IMO number, position, cargo type, damage summary, weather condition and contact details.",
+    "Structured emergency transfer assessment request page for vessel name, IMO number, position, cargo type and quantity, damage summary, weather, crew status and contact details.",
   openGraph: {
     title: "Emergency Request Contact",
     description:
@@ -68,25 +68,12 @@ const fields = [
   },
 ];
 
-type ContactPageProps = {
-  searchParams?: Promise<{
-    subject?: string;
-  }>;
-};
-
-export default async function ContactPage({ searchParams }: ContactPageProps) {
-  const subject = (await searchParams)?.subject;
-  const isCapabilityStatement = subject === "capability-statement";
-
+export default function ContactPage() {
   return (
     <main>
       <PageHero
-        title="Emergency request intake."
-        description={
-          isCapabilityStatement
-            ? "Use this UI-only form to request a capability statement or structure the first details needed for a technical feasibility review."
-            : "Use this UI-only form to structure the first details needed for a technical feasibility review. Backend submission can be connected in a later phase."
-        }
+        title="Emergency transfer assessment request."
+        description="Use this structured intake page to prepare the first details required for an emergency STS, lightering, bunker removal or salvage pumping feasibility review."
       />
 
       <section className="py-16 md:py-24">
@@ -105,12 +92,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               This foundation does not submit data yet. It is ready for a future
               backend, email workflow or incident management integration.
             </p>
-            {isCapabilityStatement ? (
-              <div className="mt-6 rounded-lg border border-cyan-200/16 bg-cyan-300/10 p-4 text-sm leading-6 text-cyan-100">
-                Capability statement request selected. Add the owner, insurer
-                or authority context in the message before submission is wired.
-              </div>
-            ) : null}
           </Reveal>
 
           <Reveal delay={0.08}>
@@ -148,7 +129,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               <div className="mt-6 flex flex-col gap-3 border-t border-cyan-200/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-xs leading-5 text-slate-500">
                   UI-only form. No information is submitted from this page yet.
-                  {isCapabilityStatement ? " Subject: capability statement." : ""}
                 </p>
                 <button
                   type="button"

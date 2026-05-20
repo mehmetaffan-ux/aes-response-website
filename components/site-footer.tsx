@@ -25,7 +25,7 @@ export function SiteFooter() {
             <p className="mt-5 max-w-xl text-sm leading-6 text-slate-400">
               Commercial emergency STS, cargo transfer, salvage pumping, bunker
               removal and pollution prevention response positioning across the
-              Aegean, Turkiye, Black Sea and Eastern Mediterranean.
+              Aegean, Türkiye, Black Sea and Eastern Mediterranean.
             </p>
           </div>
 

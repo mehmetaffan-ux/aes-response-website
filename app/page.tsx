@@ -5,10 +5,13 @@ import {
   CheckCircle2,
   ClipboardCheck,
   Compass,
+  FileText,
   FileCheck2,
   Gauge,
+  PackageCheck,
   Radio,
   ShieldCheck,
+  Wrench,
 } from "lucide-react";
 
 import { CapabilityCTA } from "@/components/capability-cta";
@@ -27,7 +30,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Emergency STS and Cargo Transfer",
   description:
-    "Rapid-response ship-to-ship transfer, emergency lightering, salvage pumping and pollution prevention support for distressed vessels across the Aegean, Turkiye, Black Sea and Eastern Mediterranean.",
+    "Time-critical emergency STS, lightering, salvage pumping and pollution prevention support across the Aegean, Türkiye, Black Sea and Eastern Mediterranean.",
   openGraph: {
     title: "Emergency STS and Cargo Transfer, When Every Hour Matters",
     description:
@@ -98,6 +101,29 @@ const intakeChecklist = [
   "Contact person",
 ];
 
+const firstDayPriorities = [
+  {
+    title: "Technical Feasibility",
+    body: "Transfer path, cargo condition, manifold access, receiving asset suitability and stop-work limits.",
+    icon: Wrench,
+  },
+  {
+    title: "Equipment Readiness",
+    body: "Fenders, hoses, pumps, spill response, gas detection, connection hardware and communication package.",
+    icon: PackageCheck,
+  },
+  {
+    title: "Stakeholder Documentation",
+    body: "Situation summary, method statement inputs, risk assessment support and completion records.",
+    icon: FileText,
+  },
+  {
+    title: "Pollution Exposure Control",
+    body: "Prevention-led planning around containment, watchkeeping, transfer pressure and emergency shutdown readiness.",
+    icon: ShieldCheck,
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -111,44 +137,45 @@ export default function Home() {
           <ArrowRight aria-hidden="true" className="size-4" />
         </Link>
 
-        <section className="relative overflow-hidden border-b border-cyan-200/10 py-12 md:py-14">
+        <section className="relative overflow-hidden border-b border-cyan-200/10 py-10 md:py-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_34%,rgba(103,232,249,0.12),transparent_32%),radial-gradient(circle_at_18%_18%,rgba(45,212,191,0.08),transparent_30%)]" />
           <div className="container-pad relative grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
             <Reveal>
               <div className="max-w-3xl">
-                <h1 className="text-4xl font-semibold leading-[1.05] text-white md:text-6xl xl:text-7xl">
+                <h1 className="text-4xl font-semibold leading-[1.05] text-white md:text-5xl xl:text-[3.25rem]">
                   Emergency STS and Cargo Transfer, When Every Hour Matters.
                 </h1>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-xl">
-                  Aegean Emergency STS provides rapid-response ship-to-ship
-                  transfer, emergency lightering, salvage pumping and pollution
-                  prevention support for distressed vessels across the Aegean,
-                  Turkiye, Black Sea and Eastern Mediterranean.
+                <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 md:text-lg">
+                  AES Response is built for time-critical emergency STS,
+                  lightering, salvage pumping and pollution prevention support
+                  when cargo, vessel condition or environmental exposure
+                  requires controlled transfer planning across the Aegean,
+                  Türkiye, Black Sea and Eastern Mediterranean.
                 </p>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-300 px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
                   >
                     Activate Response Team
                     <ArrowRight aria-hidden="true" className="size-4" />
                   </Link>
                   <Link
                     href="/contact?subject=capability-statement"
-                    className="inline-flex items-center justify-center rounded-lg border border-cyan-200/22 bg-white/5 px-6 py-4 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/40 hover:bg-white/8"
+                    className="inline-flex items-center justify-center rounded-lg border border-cyan-200/22 bg-white/5 px-5 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/40 hover:bg-white/8"
                   >
                     Request Capability Statement
                   </Link>
                   <Link
                     href="/equipment"
-                    className="inline-flex items-center justify-center rounded-lg px-5 py-4 text-sm font-semibold text-slate-300 transition hover:text-cyan-100"
+                    className="inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold text-slate-300 transition hover:text-cyan-100"
                   >
                     Explore Capabilities
                   </Link>
                 </div>
 
-                <div className="mt-7 grid gap-2 sm:grid-cols-2">
+                <div className="mt-6 grid gap-2 sm:grid-cols-2">
                   {trustStrip.map((item) => (
                     <div
                       key={item}
@@ -220,6 +247,50 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="border-b border-cyan-200/10 bg-[linear-gradient(180deg,rgba(3,18,30,0.58),rgba(2,6,23,0.76))] py-16 md:py-24">
+          <div className="container-pad">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <Reveal>
+                <div className="max-w-3xl">
+                  <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
+                    Built for the first 24 hours of a marine casualty.
+                  </h2>
+                  <p className="mt-5 text-base leading-8 text-slate-300">
+                    The first day of a casualty response often decides the quality
+                    of the next week. AES Response is designed to help owners,
+                    managers and appointed stakeholders move quickly from
+                    incomplete incident data to a controlled transfer option, with
+                    practical attention to cargo condition, vessel access,
+                    pollution exposure, weather window and authority review.
+                  </p>
+                </div>
+              </Reveal>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {firstDayPriorities.map((item, index) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <Reveal key={item.title} delay={index * 0.04}>
+                      <article className="h-full rounded-lg border border-cyan-200/14 bg-[linear-gradient(145deg,rgba(15,23,42,0.82),rgba(8,47,73,0.26))] p-5 shadow-2xl shadow-black/16">
+                        <span className="flex size-11 items-center justify-center rounded-lg border border-cyan-200/18 bg-cyan-300/10 text-cyan-200">
+                          <Icon aria-hidden="true" className="size-5" strokeWidth={1.8} />
+                        </span>
+                        <h3 className="mt-5 text-lg font-semibold text-white">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-6 text-slate-400">
+                          {item.body}
+                        </p>
+                      </article>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <CapabilityCTA compact />
 
         <section className="py-20 md:py-28">
@@ -227,7 +298,7 @@ export default function Home() {
             <SectionHeader
               label="Services"
               title="Emergency transfer capability for distressed vessel scenarios."
-              description="AES Response supports owners and appointed stakeholders with commercial, safety-focused STS transfer, cargo recovery and pollution prevention services."
+              description="AES Response structures emergency transfer work around feasibility, safety controls, equipment readiness, documentation discipline and clear stakeholder communication."
             />
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {services.map((service, index) => (
@@ -266,7 +337,7 @@ export default function Home() {
                 <Reveal delay={0.12} className="mt-8 rounded-lg border border-cyan-200/14 bg-slate-950/56 p-6">
                   <Compass aria-hidden="true" className="size-8 text-cyan-200" />
                   <p className="mt-4 text-sm leading-6 text-slate-400">
-                    Coverage focus includes the Aegean, Turkiye, Black Sea and
+                    Coverage focus includes the Aegean, Türkiye, Black Sea and
                     Eastern Mediterranean, with mobilization planning adjusted
                     to port, offshore and coastal response constraints.
                   </p>

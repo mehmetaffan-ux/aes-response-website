@@ -24,8 +24,9 @@ export function CapabilityCTA({ compact = false }: CapabilityCTAProps) {
                     Need a capability statement for owners, insurers or authorities?
                   </h2>
                   <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-                    Request a concise AES Response capability summary prepared for
-                    commercial review, emergency planning and stakeholder coordination.
+                    Request a concise AES Response capability summary covering service
+                    scope, response workflow, equipment categories and documentation
+                    approach for early stakeholder review.
                   </p>
                 </div>
               </div>
