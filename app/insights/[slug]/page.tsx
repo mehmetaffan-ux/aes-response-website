@@ -104,7 +104,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <main>
         <article>
           <header className="relative overflow-hidden border-b border-cyan-200/10 py-12 md:py-20">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(103,232,249,0.13),transparent_30%),linear-gradient(180deg,rgba(15,23,42,0.42),rgba(2,6,23,0.72))]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(111,156,188,0.13),transparent_30%),linear-gradient(180deg,rgba(15,23,42,0.42),rgba(2,6,23,0.72))]" />
             <div className="container-pad relative">
               <Reveal className="mx-auto max-w-5xl">
                 <Link
