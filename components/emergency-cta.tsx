@@ -15,19 +15,19 @@ export function EmergencyCta() {
                   <Radio aria-hidden="true" className="size-5" />
                 </div>
                 <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
-                  Need an emergency transfer assessment?
+                  Request Emergency Transfer Support
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-7 text-slate-300">
-                  Share vessel details, position, cargo, damage summary and
-                  weather conditions so the first feasibility review can start
-                  with the right technical context.
+                  Share vessel location, cargo condition, required service,
+                  urgency, damage summary and weather conditions so the first
+                  feasibility review can start with the right technical context.
                 </p>
               </div>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-300 px-6 py-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
               >
-                Activate Response Team
+                Request Emergency Transfer Support
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
