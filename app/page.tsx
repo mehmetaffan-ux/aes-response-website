@@ -206,7 +206,7 @@ export default function Home() {
         </Link>
 
         <section className="relative overflow-hidden border-b border-cyan-200/10 py-6 md:py-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_34%,rgba(103,232,249,0.12),transparent_32%),radial-gradient(circle_at_18%_18%,rgba(45,212,191,0.08),transparent_30%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_34%,rgba(111,156,188,0.12),transparent_32%),radial-gradient(circle_at_18%_18%,rgba(88,139,150,0.08),transparent_30%)]" />
           <div className="container-pad relative grid items-center gap-6 md:gap-10 lg:grid-cols-[0.92fr_1.08fr]">
             <Reveal>
               <div className="max-w-3xl">

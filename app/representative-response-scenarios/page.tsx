@@ -67,7 +67,7 @@ function ScenarioVisual({
 
   return (
     <div
-      className="relative min-h-72 overflow-hidden rounded-lg border border-cyan-200/14 bg-[radial-gradient(circle_at_76%_18%,rgba(103,232,249,0.16),transparent_26%),linear-gradient(145deg,rgba(2,6,23,0.94),rgba(8,47,73,0.62)_58%,rgba(15,23,42,0.92))] p-5"
+      className="relative min-h-72 overflow-hidden rounded-lg border border-cyan-200/14 bg-[radial-gradient(circle_at_76%_18%,rgba(111,156,188,0.16),transparent_26%),linear-gradient(145deg,rgba(2,6,23,0.94),rgba(8,47,73,0.62)_58%,rgba(15,23,42,0.92))] p-5"
       aria-label={`Illustrative rendering note for ${title}`}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/45 to-transparent" />
@@ -79,7 +79,7 @@ function ScenarioVisual({
       <div className="absolute left-10 top-40 h-10 w-40 -skew-x-12 rounded-sm border border-cyan-200/18 bg-slate-800/76 shadow-2xl shadow-black/30" />
       <div className="absolute right-10 top-32 h-12 w-44 -skew-x-12 rounded-sm border border-teal-200/18 bg-slate-800/70 shadow-2xl shadow-black/30" />
       <div className="absolute left-1/2 top-36 h-16 w-5 -translate-x-1/2 rounded-full border border-amber-200/24 bg-amber-300/18" />
-      <div className="absolute left-[38%] top-36 h-1 w-[24%] rotate-[-8deg] rounded-full bg-cyan-200/70 shadow-[0_0_18px_rgba(103,232,249,0.28)]" />
+      <div className="absolute left-[38%] top-36 h-1 w-[24%] rotate-[-8deg] rounded-full bg-cyan-200/70 shadow-[0_0_18px_rgba(111,156,188,0.28)]" />
       <div className="absolute bottom-0 left-0 right-0 h-28 bg-[linear-gradient(180deg,transparent,rgba(2,6,23,0.92))]" />
       <div className="relative z-10 mt-52">
         <h3 className="text-lg font-semibold text-white">{title}</h3>

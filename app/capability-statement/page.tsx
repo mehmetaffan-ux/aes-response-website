@@ -320,7 +320,7 @@ export default function CapabilityStatementPage() {
       <JsonLd data={webPageJsonLd} />
       <main>
         <section className="relative overflow-hidden border-b border-cyan-200/10 py-10 md:py-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(103,232,249,0.14),transparent_30%),radial-gradient(circle_at_18%_8%,rgba(45,212,191,0.08),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0.24),rgba(2,6,23,0.78))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(111,156,188,0.14),transparent_30%),radial-gradient(circle_at_18%_8%,rgba(88,139,150,0.08),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0.24),rgba(2,6,23,0.78))]" />
           <div className="container-pad relative">
             <Reveal className="grid gap-8 lg:grid-cols-[0.9fr_0.62fr] lg:items-end">
               <div className="max-w-4xl">

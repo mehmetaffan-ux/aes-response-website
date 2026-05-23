@@ -38,7 +38,7 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
                 onError={() => setImageFailed(true)}
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(103,232,249,0.12),transparent_34%),rgba(2,6,23,0.94)]">
+              <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(111,156,188,0.12),transparent_34%),rgba(2,6,23,0.94)]">
                 <Icon
                   aria-hidden="true"
                   className="size-10 text-cyan-200"

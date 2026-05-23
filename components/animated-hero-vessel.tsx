@@ -17,7 +17,7 @@ export function AnimatedHeroVessel() {
       className="relative mx-auto aspect-[1.05] w-full max-w-[560px] rounded-lg border border-cyan-200/18 bg-slate-950/70 p-4 shadow-2xl shadow-cyan-950/30 backdrop-blur-xl sm:p-6"
       aria-label="Animated ship-to-ship cargo transfer visual"
     >
-      <div className="absolute inset-0 rounded-lg bg-[linear-gradient(115deg,rgba(103,232,249,0.10),transparent_35%,rgba(251,191,36,0.06))]" />
+      <div className="absolute inset-0 rounded-lg bg-[linear-gradient(115deg,rgba(111,156,188,0.10),transparent_35%,rgba(251,191,36,0.06))]" />
       <div className="absolute inset-4 rounded-lg border border-cyan-200/10" />
 
       <motion.div

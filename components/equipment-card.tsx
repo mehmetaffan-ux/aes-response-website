@@ -53,7 +53,7 @@ export function EquipmentCard({ item, index = 0 }: EquipmentCardProps) {
                 onError={() => setImageFailed(true)}
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(45,212,191,0.12),transparent_34%),rgba(2,6,23,0.94)]">
+              <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_50%_30%,rgba(88,139,150,0.12),transparent_34%),rgba(2,6,23,0.94)]">
                 <Icon
                   aria-hidden="true"
                   className="size-10 text-cyan-200"

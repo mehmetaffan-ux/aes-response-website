@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-[4.5rem] items-center justify-center rounded-lg border border-cyan-200/25 bg-slate-950/80 px-2 shadow-[0_0_24px_rgba(34,211,238,0.12)]">
+              <span className="flex h-11 w-[4.5rem] items-center justify-center rounded-lg border border-cyan-200/25 bg-slate-950/80 px-2 shadow-[0_0_24px_rgba(76,120,150,0.12)]">
                 <Image
                   src="/images/brand/aes-logo.png"
                   alt=""

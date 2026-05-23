@@ -10,9 +10,21 @@
   --aes-border-strong: rgba(125, 211, 252, 0.34);
   --aes-text: #e7f4ff;
   --aes-muted: #9fb6c8;
-  --aes-cyan: #67e8f9;
-  --aes-teal: #2dd4bf;
+  --aes-cyan: #6f9cbc;
+  --aes-teal: #5e9e99;
   --aes-amber: #fbbf24;
+  --color-cyan-50: #eef6fb;
+  --color-cyan-100: #d7e7f3;
+  --color-cyan-200: #9dbad1;
+  --color-cyan-300: #6f9cbc;
+  --color-cyan-400: #527f9f;
+  --color-cyan-500: #3d6684;
+  --color-cyan-950: #071b2c;
+  --color-teal-100: #d9ecea;
+  --color-teal-200: #a7c8c4;
+  --color-teal-300: #5e9e99;
+  --color-teal-500: #3e746f;
+  --color-teal-950: #092a2e;
 }
 
 html {
@@ -41,9 +53,11 @@ body {
   color: #ffffff;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 details > summary {

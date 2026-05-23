@@ -46,7 +46,7 @@ export function HeroVideo({
     >
       {reduceMotion ? (
         <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(103,232,249,0.14),transparent_30%),linear-gradient(180deg,rgba(15,23,42,0.6),rgba(2,6,23,0.92))]"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(111,156,188,0.14),transparent_30%),linear-gradient(180deg,rgba(15,23,42,0.6),rgba(2,6,23,0.92))]"
           style={
             posterSrc
               ? {

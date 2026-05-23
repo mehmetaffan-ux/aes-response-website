@@ -9,7 +9,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-cyan-200/10 bg-slate-950/78 backdrop-blur-xl">
       <div className="container-pad flex h-16 items-center justify-between gap-4 md:h-20 md:gap-5">
         <Link href="/" className="flex items-center gap-3" aria-label="AES Response home">
-          <span className="flex h-10 w-16 items-center justify-center rounded-lg border border-cyan-200/25 bg-slate-950/80 px-2 shadow-[0_0_24px_rgba(34,211,238,0.12)] md:h-11 md:w-[4.5rem]">
+          <span className="flex h-10 w-16 items-center justify-center rounded-lg border border-cyan-200/25 bg-slate-950/80 px-2 shadow-[0_0_24px_rgba(76,120,150,0.12)] md:h-11 md:w-[4.5rem]">
             <Image
               src="/images/brand/aes-logo.png"
               alt=""
