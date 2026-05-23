@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Radio, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 import { siteConfig } from "@/lib/site";
 
@@ -10,8 +11,14 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex size-11 items-center justify-center rounded-lg border border-cyan-200/25 bg-cyan-300/10 text-cyan-200">
-                <Radio aria-hidden="true" className="size-5" strokeWidth={1.8} />
+              <span className="flex h-11 w-[4.5rem] items-center justify-center rounded-lg border border-cyan-200/25 bg-slate-950/80 px-2 shadow-[0_0_24px_rgba(34,211,238,0.12)]">
+                <Image
+                  src="/images/brand/aes-logo.png"
+                  alt=""
+                  width={200}
+                  height={100}
+                  className="h-8 w-auto object-contain"
+                />
               </span>
               <span>
                 <span className="block text-base font-semibold text-white">
@@ -59,7 +66,15 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col gap-4 border-t border-cyan-200/10 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
           <p>Copyright {new Date().getFullYear()} Aegean Emergency STS.</p>
-          <p>Commercial, safety-focused emergency transfer support.</p>
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-5">
+            <Link
+              href="/confidentiality"
+              className="transition hover:text-cyan-200"
+            >
+              Confidentiality & Operational Discretion
+            </Link>
+            <p>Commercial, safety-focused emergency transfer support.</p>
+          </div>
         </div>
       </div>
     </footer>

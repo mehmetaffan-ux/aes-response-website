@@ -8,6 +8,8 @@ const staticRoutes = [
   "/services",
   "/equipment",
   "/process",
+  "/representative-response-scenarios",
+  "/confidentiality",
   "/capability-statement",
   "/insights",
   "/contact",
