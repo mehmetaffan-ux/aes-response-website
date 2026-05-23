@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, ShipWheel } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { siteConfig } from "@/lib/site";
 
@@ -8,8 +9,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-cyan-200/10 bg-slate-950/78 backdrop-blur-xl">
       <div className="container-pad flex h-16 items-center justify-between gap-4 md:h-20 md:gap-5">
         <Link href="/" className="flex items-center gap-3" aria-label="AES Response home">
-          <span className="flex size-10 items-center justify-center rounded-lg border border-cyan-200/25 bg-cyan-300/10 text-cyan-200 md:size-11">
-            <ShipWheel aria-hidden="true" className="size-5" strokeWidth={1.8} />
+          <span className="flex h-10 w-16 items-center justify-center rounded-lg border border-cyan-200/25 bg-slate-950/80 px-2 shadow-[0_0_24px_rgba(34,211,238,0.12)] md:h-11 md:w-[4.5rem]">
+            <Image
+              src="/images/brand/aes-logo.png"
+              alt=""
+              width={200}
+              height={100}
+              priority
+              className="h-7 w-auto object-contain md:h-8"
+            />
           </span>
           <span className="flex flex-col leading-none">
             <span className="text-base font-semibold text-white">

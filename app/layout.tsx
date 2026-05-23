@@ -25,6 +25,22 @@ export const metadata: Metadata = {
     title: `${siteConfig.shortName} | Emergency STS and Cargo Transfer`,
     description: siteConfig.description,
   },
+  icons: {
+    icon: [
+      {
+        url: "/images/brand/aes-favicon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/images/brand/aes-favicon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
