@@ -22,6 +22,17 @@ export type Service = {
   icon: IconKey;
   summary: string;
   details: string[];
+  operationalProblem: string;
+  aesScope: string[];
+  equipmentUsed: string[];
+  hseControls: string[];
+  typicalUseCases: string[];
+  relatedLinks: {
+    label: string;
+    href: string;
+  }[];
+  imagePath?: string;
+  imageAlt?: string;
 };
 
 export type EquipmentItem = {
@@ -29,11 +40,30 @@ export type EquipmentItem = {
   icon: IconKey;
   summary: string;
   capability: string;
+  purpose?: string;
+  typicalScope?: string[];
+  operationalNotes?: string[];
+  suggestedVisual?: string;
+  imagePath?: string;
+  imageAlt?: string;
 };
 
 export type ProcessStep = {
   title: string;
   summary: string;
+};
+
+export type ResponseScenario = {
+  title: string;
+  slug: string;
+  icon: IconKey;
+  situation: string;
+  operationalChallenge: string;
+  aesScope: string;
+  equipmentConfiguration: string[];
+  hseControls: string[];
+  outcomeObjective: string;
+  visualNote: string;
 };
 
 export type Article = {
@@ -63,128 +93,504 @@ export type Article = {
 
 export const services: Service[] = [
   {
-    title: "Emergency Cargo Transfer",
-    slug: "emergency-cargo-transfer",
+    title: "Emergency Cargo Transfer Support",
+    slug: "emergency-cargo-transfer-support",
     icon: "ship",
     summary:
-      "Rapid planning and execution support for removing cargo from distressed vessels where stability, draft or damage control require controlled transfer.",
+      "Controlled cargo removal support when vessel condition, draft, stability, grounding exposure or environmental risk requires a managed transfer option.",
     details: [
-      "Cargo condition review and transfer feasibility support.",
-      "STS setup planning for damaged or restricted vessels.",
-      "Operational records for owner, authority and insurer review.",
+      "Cargo condition, quantity and transfer path review.",
+      "Receiving vessel or barge interface planning.",
+      "Operational records prepared for stakeholder review.",
     ],
+    operationalProblem:
+      "A distressed vessel may need cargo removed before safe movement, repair access, refloating, draft reduction or pollution risk reduction can be considered. Early decisions are often made with incomplete data on cargo behavior, tank condition, weather, access and receiving asset availability.",
+    aesScope: [
+      "Support initial technical assessment of cargo condition, transfer objective and receiving option.",
+      "Structure transfer sequence inputs, communication discipline and stop-work considerations.",
+      "Prepare service scope and documentation inputs for owners, managers, insurers, authorities and appointed stakeholders.",
+    ],
+    equipmentUsed: [
+      "Cargo transfer hoses selected according to product, pressure, temperature and connection data.",
+      "Floating pneumatic STS fenders when alongside transfer geometry is required.",
+      "Manifold accessories, reducers, spool pieces and spill prevention support configured per operation.",
+    ],
+    hseControls: [
+      "Cargo compatibility and tank atmosphere review before transfer planning.",
+      "Pressure monitoring, leak watch, emergency shutdown readiness and communication protocol.",
+      "Pollution prevention setup selected according to cargo type, vessel condition and site risk.",
+    ],
+    typicalUseCases: [
+      "Disabled tanker or cargo vessel requiring draft or stress reduction.",
+      "Distressed vessel where cargo exposure increases pollution or casualty management risk.",
+      "Transfer preparation for receiving vessel, barge or approved receiving arrangement.",
+    ],
+    relatedLinks: [
+      { label: "View equipment capability", href: "/equipment" },
+      {
+        label: "Representative cargo removal scenario",
+        href: "/representative-response-scenarios#emergency-cargo-removal-disabled-tanker",
+      },
+      { label: "Start emergency request", href: "/contact" },
+    ],
+    imagePath: "/images/equipment/cargo-hose.jpg",
+    imageAlt: "Large-diameter cargo transfer hoses stored with flanged ends",
   },
   {
-    title: "STS & Lightering Operations",
-    slug: "sts-lightering-operations",
-    icon: "anchor",
+    title: "STS Fendering & Transfer Preparation",
+    slug: "sts-fendering-transfer-preparation",
+    icon: "waves",
     summary:
-      "Ship-to-ship and lightering support for reducing draft, relieving structural stress and enabling safer onward movement.",
+      "STS preparation support around fendering, transfer geometry, hose routing, receiving asset interface and field coordination controls.",
     details: [
-      "Fendering, hose and mooring arrangement planning.",
-      "Receiving vessel interface checks and transfer sequence support.",
-      "Commercial STS documentation package preparation.",
+      "Fender spread and alongside interface planning.",
+      "Receiving vessel suitability and transfer geometry review.",
+      "Method inputs for controlled STS preparation.",
     ],
+    operationalProblem:
+      "Emergency STS work requires more than placing two vessels alongside. Hull geometry, freeboard, sea state, manifold position, receiving asset suitability, mooring arrangement and authority review all affect whether transfer preparation is practical.",
+    aesScope: [
+      "Support fendering concept, hose path and transfer interface planning.",
+      "Review available vessel data, metocean constraints and deck access limitations.",
+      "Coordinate preparation inputs for appointed stakeholders before on-site setup.",
+    ],
+    equipmentUsed: [
+      "Floating pneumatic STS fenders configured according to vessel size, freeboard and expected motion.",
+      "Cargo hose package, manifold accessories and connection hardware selected after technical assessment.",
+      "Communications, rigging support and pollution prevention package considered for field setup.",
+    ],
+    hseControls: [
+      "Weather, sea state, vessel movement and mooring limits defined before operation support.",
+      "Deck watchkeeping, leak checks, pressure controls and emergency stop discipline.",
+      "Interface planning remains subject to master, authority and appointed stakeholder approval.",
+    ],
+    typicalUseCases: [
+      "Emergency lightering to reduce draft or relieve vessel stress.",
+      "Cargo transfer preparation where receiving vessel or barge suitability must be reviewed.",
+      "STS setup where fenders, hoses and communication controls require coordinated planning.",
+    ],
+    relatedLinks: [
+      { label: "STS equipment capability", href: "/equipment" },
+      {
+        label: "Emergency STS preparation scenario",
+        href: "/representative-response-scenarios#emergency-sts-transfer-preparation",
+      },
+      { label: "Confidentiality approach", href: "/confidentiality" },
+    ],
+    imagePath: "/images/equipment/fenders.jpg",
+    imageAlt: "Floating pneumatic STS fenders positioned between tanker hulls",
   },
   {
-    title: "Salvage Pumping",
-    slug: "salvage-pumping",
+    title: "Portable Pumping Solutions",
+    slug: "portable-pumping-solutions",
     icon: "gauge",
     summary:
-      "Portable pumping capability planning for cargo, bunker or water removal during emergency response and salvage support.",
+      "Portable pumping support for cargo, bunker, slop or water removal where vessel systems are damaged, unavailable or unsuitable.",
     details: [
-      "Pump and power pack selection by cargo and access conditions.",
-      "Temporary hose routing and manifold connection planning.",
-      "Discharge control and watchkeeping coordination.",
+      "Pump and power pack configuration by medium and access.",
+      "Temporary suction/discharge route planning.",
+      "Watchkeeping and discharge control inputs.",
     ],
+    operationalProblem:
+      "A casualty may require temporary pumping when fixed pumps cannot be used or when tank access, product viscosity, flooding, power availability or discharge routing prevents ordinary transfer methods.",
+    aesScope: [
+      "Support pump selection according to medium type, access, viscosity, suction condition and discharge objective.",
+      "Plan hydraulic power unit or diesel power pack positioning subject to vessel condition and risk review.",
+      "Structure temporary hose routing, receiving interface and pumping watchkeeping inputs.",
+    ],
+    equipmentUsed: [
+      "Hydraulic submersible pumps selected according to product, lift, access and discharge requirements.",
+      "Hydraulic power units or diesel power packs available through project-specific mobilization where appropriate.",
+      "Temporary hose lines, connection accessories and containment measures configured per operation.",
+    ],
+    hseControls: [
+      "Tank atmosphere, product hazard and access review before pump deployment planning.",
+      "Pressure, temperature, discharge route and spill prevention monitoring.",
+      "Emergency shutdown readiness and communication discipline during pumping support.",
+    ],
+    typicalUseCases: [
+      "Cargo, slop, bunker or water removal from distressed vessel tanks or spaces.",
+      "Salvage support where vessel systems are unavailable or unreliable.",
+      "Emergency pumping to reduce secondary exposure before transfer or repair activity.",
+    ],
+    relatedLinks: [
+      { label: "Pumping equipment categories", href: "/equipment" },
+      {
+        label: "Portable pumping scenario",
+        href: "/representative-response-scenarios#portable-pumping-cargo-slop-tank",
+      },
+      { label: "Contact AES Response", href: "/contact" },
+    ],
+    imagePath: "/images/equipment/submerged-pump.jpg",
+    imageAlt:
+      "Hydraulic submersible pump and hydraulic power pack for emergency cargo removal",
   },
   {
-    title: "Bunker Removal",
-    slug: "bunker-removal",
-    icon: "fuel",
+    title: "Cargo Hose & Manifold Connection Support",
+    slug: "cargo-hose-manifold-connection-support",
+    icon: "cable",
     summary:
-      "Structured removal of fuel oil, diesel and lubricants to reduce pollution exposure and improve casualty management options.",
+      "Connection package support for cargo hose routing, manifold interface review, reducers, spool pieces and pressure boundary checks.",
     details: [
-      "Tank identification and safe transfer sequencing.",
-      "Hose, pump and receiving asset interface planning.",
-      "Pollution prevention controls during bunker handling.",
+      "Cargo hose and manifold data review.",
+      "Reducers, adapters and spool piece planning.",
+      "Leak check and connection sequence inputs.",
     ],
+    operationalProblem:
+      "Emergency transfer plans can fail at the interface. Different flange standards, damaged manifold access, restricted deck space, product pressure requirements and missing connection hardware can delay or prevent a controlled transfer.",
+    aesScope: [
+      "Support review of manifold standards, flange data, pressure requirements and hose compatibility.",
+      "Plan adapters, reducers, spool pieces, gaskets and bolting requirements where appropriate.",
+      "Provide connection sequence inputs for method statements and field coordination.",
+    ],
+    equipmentUsed: [
+      "Cargo transfer hoses selected according to cargo type, pressure rating and connection requirement.",
+      "Manifold adapters, reducers, spool pieces, gaskets, bolting and blanking arrangements configured per operation.",
+      "Drip-control and spill prevention materials considered around connection and disconnection points.",
+    ],
+    hseControls: [
+      "Pressure boundary and compatibility checks before transfer preparation.",
+      "Leak check, flange integrity, hose support and emergency shutdown readiness.",
+      "Connection package remains subject to vessel survey, cargo type and technical risk review.",
+    ],
+    typicalUseCases: [
+      "Distressed vessel requiring temporary hose connection to receiving vessel or barge.",
+      "Emergency transfer where manifold standards or access conditions must be resolved quickly.",
+      "Bunker, slop or cargo movement requiring temporary connection hardware planning.",
+    ],
+    relatedLinks: [
+      { label: "Manifold accessories capability", href: "/equipment" },
+      { label: "View representative scenarios", href: "/representative-response-scenarios" },
+      { label: "Request technical review", href: "/contact" },
+    ],
+    imagePath: "/images/equipment/cargo-hose.jpg",
+    imageAlt: "Large-diameter cargo transfer hoses stored with flanged ends",
   },
   {
-    title: "Pollution Prevention",
-    slug: "pollution-prevention",
+    title: "Pollution Prevention & Boom Deployment",
+    slug: "pollution-prevention-boom-deployment",
     icon: "shield",
     summary:
-      "Preventive controls, spill response readiness and containment planning around emergency transfer operations.",
+      "Prevention-led containment and spill control planning around emergency transfer, bunker removal and portable pumping activities.",
     details: [
-      "Pre-transfer spill prevention checks and watchkeeping.",
-      "Oil spill package staging and escalation planning.",
-      "Completion records for incident file continuity.",
+      "Boom, absorbent and drip-control package planning.",
+      "Pollution watchkeeping structure before transfer.",
+      "Escalation and emergency stop readiness inputs.",
     ],
+    operationalProblem:
+      "Emergency transfer and pumping operations can increase pollution exposure if containment, watchkeeping, deck drainage, transfer pressure and emergency shutdown controls are not planned before product movement begins.",
+    aesScope: [
+      "Support pollution prevention setup around transfer points, hose routes and receiving asset interface.",
+      "Plan containment concepts according to product, vessel location, weather, current and site constraints.",
+      "Structure pollution watchkeeping, escalation and close-out documentation inputs.",
+    ],
+    equipmentUsed: [
+      "Oil spill containment boom selected according to site conditions and transfer arrangement.",
+      "Absorbents, drip trays, temporary storage and deck spill prevention materials.",
+      "Communications package and watchkeeping controls configured per operation.",
+    ],
+    hseControls: [
+      "Pre-transfer containment readiness check and dedicated pollution watch.",
+      "Transfer pressure, hose condition, leak watch and emergency stop protocol.",
+      "Planning remains subject to local authority requirements and appointed stakeholder instructions.",
+    ],
+    typicalUseCases: [
+      "Emergency STS or lightering where pollution exposure must be controlled before transfer.",
+      "Bunker removal or slop transfer from a distressed vessel.",
+      "Portable pumping where discharge route and containment require field coordination.",
+    ],
+    relatedLinks: [
+      { label: "Pollution prevention equipment", href: "/equipment" },
+      {
+        label: "Pollution prevention scenario",
+        href: "/representative-response-scenarios#pollution-prevention-setup-before-emergency-transfer",
+      },
+      { label: "Confidentiality approach", href: "/confidentiality" },
+    ],
+    imagePath: "/images/equipment/oil-spill-boom.jpg",
+    imageAlt:
+      "Workboat deploying orange oil spill containment boom during maritime response",
   },
   {
-    title: "Authority & Insurer Documentation Support",
-    slug: "documentation-support",
-    icon: "file",
+    title: "Marine Engineering Attendance / Field Coordination",
+    slug: "marine-engineering-attendance-field-coordination",
+    icon: "clipboard",
     summary:
-      "Commercial and technical documentation support for owners, local authorities, class representatives and insurers.",
+      "Marine engineering attendance and field coordination support for setup, transfer monitoring, stakeholder communication and close-out records.",
     details: [
-      "Situation summaries and transfer method statements.",
-      "Risk assessment inputs and supporting evidence capture.",
-      "Completion reporting and demobilization records.",
+      "On-site setup and transfer monitoring support.",
+      "Stakeholder communication and documentation discipline.",
+      "Demobilization and reporting inputs.",
+    ],
+    operationalProblem:
+      "Emergency transfer work requires disciplined coordination between vessel teams, owners, managers, receiving assets, authorities, insurers, class representatives and appointed specialists. Poor communication can create delays, unsafe assumptions and incomplete records.",
+    aesScope: [
+      "Support field coordination around setup, fendering, hose routing, pump deployment and transfer monitoring.",
+      "Maintain communication structure, operational observations and completion record inputs.",
+      "Coordinate documentation discipline for early review, operation support and demobilization.",
+    ],
+    equipmentUsed: [
+      "Communications, rigging support, safety equipment and connection package inputs selected according to site conditions.",
+      "Fenders, hoses, pumps and pollution prevention support coordinated with the approved transfer plan.",
+      "Reporting templates and evidence capture structured for appointed stakeholder review.",
+    ],
+    hseControls: [
+      "Toolbox briefing, watchkeeping roles, stop-work limits and escalation protocol.",
+      "Field observations around weather, vessel motion, pressure behavior, leaks and pollution exposure.",
+      "Documentation approach respects confidentiality and does not replace authority or class requirements.",
+    ],
+    typicalUseCases: [
+      "Emergency transfer setup requiring marine engineering attendance.",
+      "Field coordination during STS preparation, pumping or pollution prevention deployment.",
+      "Close-out reporting for owners, managers, insurers or authorities where appropriate.",
+    ],
+    relatedLinks: [
+      { label: "How operations are structured", href: "/process" },
+      { label: "Confidentiality approach", href: "/confidentiality" },
+      { label: "Start emergency request", href: "/contact" },
     ],
   },
 ];
 
 export const equipment: EquipmentItem[] = [
   {
-    title: "Pneumatic STS Fenders",
+    title: "Cargo Transfer Hoses",
+    icon: "cable",
+    summary:
+      "Transfer hose package planning for compatible cargo, bunker and selected chemical movements in emergency lightering conditions.",
+    capability:
+      "Hose specification is confirmed against cargo compatibility, working pressure, temperature, bend radius and end connection requirements.",
+    purpose:
+      "Provide a controlled temporary transfer path between a distressed vessel, receiving vessel, barge or shore-side receiving arrangement where a permanent cargo system is unavailable or unsuitable.",
+    typicalScope: [
+      "Large-diameter hose sections selected by cargo type, pressure rating and transfer geometry.",
+      "End connections, gaskets and bolting packages reviewed against manifold standards.",
+      "Hose routing, support, drip control and pressure monitoring inputs for the transfer plan.",
+    ],
+    operationalNotes: [
+      "Final hose selection is subject to cargo compatibility, manifold survey and risk assessment.",
+      "Hose handling arrangements should account for vessel motion, deck access and emergency shutdown requirements.",
+    ],
+    suggestedVisual:
+      "Illustrative rendering or approved equipment photograph showing flanged cargo hoses staged for emergency transfer planning.",
+    imagePath: "/images/equipment/cargo-hose.jpg",
+    imageAlt: "Large-diameter cargo transfer hoses stored with flanged ends",
+  },
+  {
+    title: "Floating Pneumatic STS Fenders",
     icon: "waves",
     summary:
       "High-energy fendering arrangements for emergency ship-to-ship interfaces and controlled alongside operations.",
-    capability: "Sizing and positioning are selected by vessel size, sea state, freeboard and transfer geometry.",
+    capability:
+      "Sizing and positioning are selected by vessel size, sea state, freeboard, hull geometry and transfer configuration.",
+    purpose:
+      "Reduce hull contact risk during alongside STS positioning by creating a controlled separation and energy absorption interface between vessels.",
+    typicalScope: [
+      "Primary and secondary fender spread planning based on vessel size and freeboard.",
+      "Mooring and deck access considerations for fender deployment and watchkeeping.",
+      "STS interface review for receiving vessel suitability and stop-work limits.",
+    ],
+    operationalNotes: [
+      "Fender size, number and placement are configured per operation and reviewed against metocean conditions.",
+      "Fendering plans do not replace master approval, authority permission or appointed marine warranty review where required.",
+    ],
+    suggestedVisual:
+      "Illustrative rendering or approved equipment photograph of floating pneumatic fenders positioned between tanker hulls.",
+    imagePath: "/images/equipment/fenders.jpg",
+    imageAlt: "Floating pneumatic STS fenders positioned between tanker hulls",
   },
   {
-    title: "Cargo, Bunker & Chemical Hoses",
-    icon: "cable",
-    summary:
-      "Transfer hose package planning for compatible cargo, bunker and chemical movements in emergency lightering conditions.",
-    capability: "Hose specification is confirmed against cargo compatibility, pressure, temperature and end connection needs.",
-  },
-  {
-    title: "Portable Pumps & Hydraulic Power Packs",
+    title: "Hydraulic Power Units / Diesel Power Packs",
     icon: "gauge",
     summary:
-      "Portable pumping packages for salvage pumping, bunker removal and cargo recovery where fixed systems are unavailable.",
-    capability: "Pump configuration depends on cargo type, viscosity, suction lift, access and safe discharge route.",
+      "Power package planning for hydraulic pumping and deck equipment where shipboard systems cannot support the required transfer operation.",
+    capability:
+      "Power pack configuration is reviewed against pump demand, fuel availability, deck location, ventilation and safe operating controls.",
+    purpose:
+      "Supply independent hydraulic or diesel power to temporary pumping equipment during salvage pumping, bunker removal or cargo recovery support.",
+    typicalScope: [
+      "Hydraulic power unit or diesel power pack selection by pump requirement and working location.",
+      "Fuel, exhaust, hose run, deck support and lifting considerations.",
+      "Operational monitoring inputs for pressure, temperature and emergency shutdown readiness.",
+    ],
+    operationalNotes: [
+      "Power units are selected according to access, cargo hazard profile, ventilation and local permit controls.",
+      "Final configuration remains subject to vessel condition, deck loading and HSE review.",
+    ],
+    suggestedVisual:
+      "Illustrative rendering of a hydraulic power pack staged on deck with hose connections routed to a pump package.",
   },
   {
-    title: "Manifold Adapters, Reducers & Spool Pieces",
-    icon: "wrench",
+    title: "Hydraulic Submersible Pumps",
+    icon: "gauge",
     summary:
-      "Connection hardware to bridge damaged vessel, receiving vessel and temporary transfer package interfaces.",
-    capability: "Adapters are selected after manifold survey, flange standard review and pressure boundary checks.",
+      "Portable pump package planning for cargo, bunker, slop or water removal where fixed vessel systems are unavailable, damaged or restricted.",
+    capability:
+      "Pump configuration depends on medium type, viscosity, suction condition, tank access, discharge route and safe power source.",
+    purpose:
+      "Support controlled removal from tanks, flooded spaces or restricted access areas when emergency pumping is required for casualty management.",
+    typicalScope: [
+      "Hydraulic submersible pump selection by medium, flow requirement and access method.",
+      "Temporary suction/discharge hose routing and receiving unit interface planning.",
+      "Pump watchkeeping, pressure control and stop-work criteria inputs.",
+    ],
+    operationalNotes: [
+      "Pump suitability is confirmed after product, tank atmosphere, access and discharge route review.",
+      "Operation planning should include gas detection, communication discipline and contingency shutdown procedure.",
+    ],
+    suggestedVisual:
+      "Illustrative rendering or approved equipment photograph of hydraulic submersible pump and power pack support equipment.",
+    imagePath: "/images/equipment/submerged-pump.jpg",
+    imageAlt:
+      "Hydraulic submersible pump and hydraulic power pack for emergency cargo removal",
   },
   {
-    title: "Oil Spill Response Package",
+    title: "Pollution Prevention Equipment",
     icon: "droplets",
     summary:
-      "Containment and recovery support items staged around transfer operations to reduce escalation risk.",
-    capability: "Package planning may include boom, absorbents, temporary storage and response escalation contacts.",
+      "Containment, spill prevention and response support items staged around transfer operations to reduce escalation risk.",
+    capability:
+      "Package planning may include containment boom, absorbents, drip control, temporary storage and response escalation interfaces.",
+    purpose:
+      "Create a prevention-led operating envelope around emergency transfer, bunker removal and salvage pumping activities.",
+    typicalScope: [
+      "Oil spill boom, absorbent materials and deck drip-control planning.",
+      "Pollution watchkeeping positions and escalation contacts.",
+      "Containment layout adapted to vessel position, current, weather and receiving asset arrangement.",
+    ],
+    operationalNotes: [
+      "Pollution prevention measures are selected according to product risk, local requirements and site conditions.",
+      "Containment arrangements do not replace authority approval, port permission or appointed response contractor requirements.",
+    ],
+    suggestedVisual:
+      "Illustrative rendering or approved equipment photograph of containment boom deployed before an emergency transfer.",
+    imagePath: "/images/equipment/oil-spill-boom.jpg",
+    imageAlt:
+      "Workboat deploying orange oil spill containment boom during maritime response",
   },
   {
-    title: "Gas Detection & Safety Equipment",
-    icon: "activity",
+    title: "Manifold & Connection Accessories",
+    icon: "wrench",
     summary:
-      "Safety monitoring equipment for atmosphere checks, transfer control zones and confined-space awareness.",
-    capability: "Final equipment selection is aligned with cargo hazards, vessel access and work permit controls.",
+      "Connection hardware planning to bridge distressed vessel, receiving unit and temporary transfer package interfaces.",
+    capability:
+      "Adapters are selected after manifold survey, flange standard review, pressure boundary checks and transfer package confirmation.",
+    purpose:
+      "Enable compatible and controlled connections where vessel manifolds, hose packages, reducers or temporary spool pieces must be matched under emergency conditions.",
+    typicalScope: [
+      "Reducers, spool pieces, gaskets, bolting and blanking arrangements.",
+      "Flange standard confirmation and pressure boundary review.",
+      "Connection sequence, leak check and completion record inputs.",
+    ],
+    operationalNotes: [
+      "Connection accessories are configured per operation after vessel interface review.",
+      "No connection package should be assumed suitable before compatibility, pressure and access checks are complete.",
+    ],
+    suggestedVisual:
+      "Illustrative rendering of manifold adapters, reducers and spool pieces arranged for pre-mobilization review.",
+  },
+];
+
+export const responseScenarios: ResponseScenario[] = [
+  {
+    title: "Emergency Cargo Removal from Disabled Tanker",
+    slug: "emergency-cargo-removal-disabled-tanker",
+    icon: "ship",
+    situation:
+      "A loaded tanker is unable to continue safely due to machinery restriction, structural concern or draft limitation after an incident. Cargo removal is considered to reduce exposure and create safer response options.",
+    operationalChallenge:
+      "Decision-makers may have incomplete data on vessel condition, cargo behavior, weather window, receiving asset suitability and local authority expectations.",
+    aesScope:
+      "AES Response supports early feasibility review, controlled transfer planning, equipment category selection, stakeholder documentation and transfer preparation inputs.",
+    equipmentConfiguration: [
+      "Floating pneumatic STS fenders configured around the planned interface.",
+      "Cargo transfer hoses and manifold connection accessories selected after compatibility review.",
+      "Pollution prevention package staged around transfer watchkeeping and drip-control requirements.",
+    ],
+    hseControls: [
+      "Stop-work limits tied to weather, vessel motion, pressure behavior and communication loss.",
+      "Gas detection and deck watchkeeping planned according to cargo risk profile.",
+      "Authority and appointed stakeholder review before transfer execution.",
+    ],
+    outcomeObjective:
+      "Reduce cargo-related exposure while supporting a documented, controlled option for vessel stabilization, onward movement or further casualty management.",
+    visualNote:
+      "Illustrative rendering: disabled tanker and receiving vessel in an STS arrangement with fenders, hoses and containment readiness. Not a real operation photograph.",
   },
   {
-    title: "Mooring, Rigging & Communications",
-    icon: "radio",
-    summary:
-      "Operational support equipment for vessel positioning, line handling, deck coordination and transfer watchkeeping.",
-    capability: "Rigging and communications plans are adapted to vessel condition, deck layout and local authority controls.",
+    title: "Emergency STS Transfer Preparation",
+    slug: "emergency-sts-transfer-preparation",
+    icon: "anchor",
+    situation:
+      "An owner, manager or appointed stakeholder needs a practical STS preparation plan before cargo can be moved from a distressed vessel to a receiving vessel or barge.",
+    operationalChallenge:
+      "The operation must account for hull geometry, freeboard, manifold location, cargo compatibility, sea state, transfer pressure, communications and local permission constraints.",
+    aesScope:
+      "AES Response structures the preparation package around feasibility inputs, fendering concept, hose routing, transfer sequence considerations and documentation support.",
+    equipmentConfiguration: [
+      "Fender spread concept reviewed against vessel size and alongside geometry.",
+      "Cargo hose and manifold accessory package selected according to cargo and flange data.",
+      "Communications, deck watchkeeping and emergency shutdown readiness included in planning.",
+    ],
+    hseControls: [
+      "Pre-transfer briefing and agreed communication protocol.",
+      "Transfer pressure and leak-watch discipline.",
+      "Weather, sea state and vessel movement limits defined before operation support.",
+    ],
+    outcomeObjective:
+      "Create a clear, reviewable preparation basis for a controlled STS operation without implying automatic approval or guaranteed execution.",
+    visualNote:
+      "Illustrative rendering: two commercial vessels positioned for STS preparation with visible fenders, hose route and deck lighting. Not a disclosed client reference.",
+  },
+  {
+    title: "Portable Pumping from Cargo / Slop Tank",
+    slug: "portable-pumping-cargo-slop-tank",
+    icon: "gauge",
+    situation:
+      "A distressed vessel requires temporary pumping from a cargo, slop, bunker or water-affected space because fixed pumping systems are restricted, damaged or unsuitable.",
+    operationalChallenge:
+      "Pump choice and safe routing depend on product condition, tank access, atmosphere, viscosity, discharge location, power source and deck layout.",
+    aesScope:
+      "AES Response supports pump package selection, hydraulic power planning, temporary hose route review, receiving interface inputs and completion record structure.",
+    equipmentConfiguration: [
+      "Hydraulic submersible pump selected against medium and access conditions.",
+      "Hydraulic power unit or diesel power pack positioned according to deck and ventilation review.",
+      "Temporary discharge hose routed to receiving asset or approved containment point.",
+    ],
+    hseControls: [
+      "Atmosphere checks and product hazard review before pump deployment.",
+      "Pressure, temperature and discharge monitoring during pumping.",
+      "Emergency shutdown and spill prevention controls included in method inputs.",
+    ],
+    outcomeObjective:
+      "Enable controlled removal of cargo, bunker, slop or water to support casualty management and reduce secondary exposure.",
+    visualNote:
+      "Illustrative rendering: portable hydraulic pump package, power unit and temporary hose routing on a distressed vessel deck. Not a real operation photograph.",
+  },
+  {
+    title: "Pollution Prevention Setup Before Emergency Transfer",
+    slug: "pollution-prevention-setup-before-emergency-transfer",
+    icon: "shield",
+    situation:
+      "Before emergency cargo transfer, bunker removal or salvage pumping, stakeholders require a prevention-led setup to reduce pollution exposure around the operation.",
+    operationalChallenge:
+      "Containment and watchkeeping must be adapted to product type, vessel position, local current, weather, deck drainage, receiving asset interface and escalation requirements.",
+    aesScope:
+      "AES Response supports pollution prevention package planning, containment layout inputs, watchkeeping structure, communication plan and documentation for early review.",
+    equipmentConfiguration: [
+      "Oil spill boom or containment concept selected according to site conditions.",
+      "Absorbents, drip-control and temporary storage considered around transfer points.",
+      "Communications and escalation contacts integrated into operational preparation.",
+    ],
+    hseControls: [
+      "Pre-transfer containment readiness check.",
+      "Dedicated pollution watchkeeping during connection, transfer and disconnection.",
+      "Emergency stop and escalation protocol aligned with local requirements.",
+    ],
+    outcomeObjective:
+      "Reduce environmental exposure and support a documented prevention posture before cargo or bunker movement begins.",
+    visualNote:
+      "Illustrative rendering: workboat and containment boom staged around an emergency transfer area. For public explanation only, not an operation photograph.",
   },
 ];
 
